@@ -23,6 +23,20 @@ mypirate = PirateNameGenerator("Drew", "Rosenberg")
 print (mypirate.origFirst, mypirate.origLast)
 print (mypirate.CreateName())
 
+def showName():
+    #get the first and last name out of the box
+    fn = ftext.get()
+    ln = ltext.get()
+    #clear boxes
+    ftext.delete(0, "end")
+    ltext.delete(0, "end")
+    #create an instance of the pirate name generator class
+    mygen = PirateNameGenerator(fn, ln)
+    #generate a name
+    pirateOutput = mygen.CreateName()
+    #show it on the screen
+    output.config(text=pirateOutput, compound=CENTER)
+
 root = Tk()
 
 #create the controls
@@ -38,8 +52,8 @@ flabel = Label(root, text="First Name", font=myfont)
 llabel = Label(root, text="Last Name", font=myfont)
 ftext = Entry(root, font=myfont)
 ltext = Entry(root, font=myfont)
-bshow = Button(root, text="Show My Name", font=myfont)
-output = Label(root, image=banner)
+bshow = Button(root, text="Show My Name", font=myfont, command=showName)
+output = Label(root, image=banner, font="BlackPearl 14")
 
 #add the controls to the window
 title.grid(row=0, column=0, columnspan=2)
