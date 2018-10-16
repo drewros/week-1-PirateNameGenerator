@@ -13,10 +13,18 @@ class PirateNameGenerator():
         self.origLast = lastName
 
     def CreateName(self):
+        '''
         x = random.randint(0, len(self.firstList)-1)
         y = random.randint(0, len(self.lastList)-1)
         return self.firstList[x] + self.lastList[y]
-
+        '''
+        letter1 = self.origFirst[-1:]
+        letter2 = self.origLast[0]
+        index1 = ord(letter1.upper()) - 65
+        index2 = ord(letter2.upper()) - 65
+        pirateFirst = self.firstList[index1 % len(self.firstList)]
+        pirateLast = self.lastList[index2 % len(self.lastList)]
+        return pirateFirst + " " + pirateLast
 
 mypirate = PirateNameGenerator("Drew", "Rosenberg")
 
